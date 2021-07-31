@@ -5,13 +5,22 @@ import List from "./components/hooks/List";
 import { Provider } from "react-redux";
 import store from "./redux";
 import Counter from "./components/redux/Counter";
+import InCounter from "./components/myRedux/InCounter";
 
 const App = () => {
   return (
-    <Provider store={store}>
+    <>
+      <h1>Hooks</h1>
       <List />
-      <Counter />
-    </Provider>
+      <hr />
+      <h1>Redux</h1>
+      <Provider store={store}>
+        <Counter />
+      </Provider>
+      <hr />
+      <h1>MyRedux</h1>
+      <InCounter />
+    </>
   );
 };
 

@@ -4,6 +4,7 @@ export const counterSlice = createSlice({
   name: "counter",
   initialState: {
     number: 0,
+    name: "chul",
   },
   reducers: {
     increment: (state) => {
@@ -20,6 +21,7 @@ export const { increment, decrement } = counterSlice.actions;
 
 // Selector
 export const counterSelector = (state) => state.counter.number;
+export const nameSelector = (state) => state.counter.name;
 
 // Reducer
 export default counterSlice.reducer;

@@ -5,6 +5,14 @@ const Title = ({ color, onClickHandler, isSelected }) => {
     <h3
       style={{ fontSize: `${isSelected ? "30px" : "15px"}` }}
       onClick={handleClick}
+      onMouseOver={(event) => {
+        const { currentTarget } = event;
+        currentTarget.style.textDecoration = `underline`;
+        currentTarget.style.cursor = `pointer`;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.textDecoration = `none`;
+      }}
     >
       {color}
     </h3>
