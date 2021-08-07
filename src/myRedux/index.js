@@ -34,7 +34,7 @@ const monitorMiddleware = (store) => (next) => (action) => {
   setTimeout(() => {
     console.log("monitor", action.type);
     next(action);
-  }, 2000);
+  }, 500);
 };
 
 // Entry point
@@ -42,13 +42,14 @@ export const store = createStore(reducer, [
   loggerMiddleware,
   monitorMiddleware,
 ]);
-store.subscribe(() => console.log("hit"));
+store.subscribe(() => console.log(store.getState()));
 
 // Action Fire!
-// const Init = () => store.dispatch(actionCreator(...initAction));
-// const Increment = () => store.dispatch(actionCreator(...incrementAction));
-// Init();
-// Increment();
+export const Init = () =>
+  store.dispatch(actionCreator(initAction.type, initAction.payload));
+export const Increment = () => {
+  store.dispatch(actionCreator(incrementAction.type));
+};
 
 // Selector
-export const getState = store.getState;
+export const selector = store.getState;

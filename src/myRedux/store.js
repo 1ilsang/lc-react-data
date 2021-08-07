@@ -8,7 +8,7 @@ export const createStore = (reducer, middlewares = []) => {
   const publish = () =>
     listeners.forEach(({ subscriber, context }) => subscriber.call(context));
   const dispatch = (action) => {
-    store = reducer(state, action);
+    state = reducer(state, action);
     publish();
   };
   const getState = () => ({ ...state });
