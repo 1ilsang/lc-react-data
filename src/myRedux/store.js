@@ -11,6 +11,8 @@ export const createStore = (reducer, middlewares = []) => {
     state = reducer(state, action);
     publish();
   };
+  // 이전의 state와의 관계를 끊어주기 위해 사용.
+  // 이 예제에선 deepCopy로 동작하지 않는다!
   const getState = () => ({ ...state });
   const store = {
     dispatch,
@@ -30,7 +32,7 @@ export const createStore = (reducer, middlewares = []) => {
   };
 };
 
-export const actionCreator = (type, payload = {}) => ({
+export const actionCreator = ({ type, payload = {} }) => ({
   type,
   payload: { ...payload },
 });
